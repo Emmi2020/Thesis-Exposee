@@ -1,0 +1,27 @@
+{
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+    "latex-workshop.latex.recipe.default": "Docker: LuaLaTeX",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Docker: LuaLaTeX",
+            "tools": [
+                "docker-latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "docker-latexmk",
+            "command": "powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "%WORKSPACE_FOLDER%/build-latex.ps1"
+            ],
+            "env": {}
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+% !TeX program = lualatex
+\documentclass[12pt, a4paper]{scrreprt}
+
+\usepackage{xcolor}
+\definecolor{TitleBlue}{RGB}{0, 76, 147}
+\input{preamble}
+
+\begin{document}
+
+\input{Frontmatter/titlepage}
+
+\tableofcontents
+
+\input{Frontmatter/abbreviations}
+
+\input{Chapters/01-objectives/objectives}
+\input{Chapters/02-company-profile/company-profile}
+\input{Chapters/03-internship-activities/internship-activities}
+\input{Chapters/04-summary/summary}
+\input{Chapters/05-discussion/discussion}
+
+\printbibliography[heading=bibintoc, title={References}]
+
+\end{document}

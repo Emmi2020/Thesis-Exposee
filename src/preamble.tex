@@ -1,0 +1,174 @@
+% !TeX root = main.tex
+% Font and language-specific settings
+\usepackage{iftex}
+\ifPDFTeX
+	% fontspec and \setmainfont require XeLaTeX or LuaLaTeX.
+	\usepackage[T1]{fontenc}
+	\usepackage{helvet}
+	\renewcommand{\familydefault}{\sfdefault}
+\else
+	\usepackage{fontspec}
+	\IfFontExistsTF{Verdana}
+		{\setmainfont{Verdana}}
+		{\setmainfont{TeX Gyre Heros}}
+\fi
+\usepackage[english]{babel}
+%\usepackage{microtype}
+
+% General utility packages
+\usepackage[printonlyused,nohyperlinks]{acronym}    % Acronyms
+\usepackage{microtype}                 % Better typography
+%\usepackage{textcomp}                  % Degree symbol
+\usepackage{enumitem}                  % Numbered lists
+\usepackage{scrlayer-scrpage}          % Header and footer
+\usepackage{setspace}                  % Line spacing
+\usepackage{graphicx}                  % Images
+\usepackage{tikz}                      % Graphics and annotations
+\usepackage[left=25mm,right=25mm,top=25mm,bottom=20mm]{geometry} % Page margins
+\usepackage{blindtext}                 % Placeholder text
+\usepackage{pdfpages}                  % Include PDF files
+\usepackage{subfig}                    % Figures
+\usepackage{makecell}                  % Tables
+%\usepackage{svg}                       % SVG files
+\usepackage{adjustbox} 
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}[Scale=1.1]
+\usepackage{multirow}
+\usepackage{ulem}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage{makecell}
+\usepackage{xurl}
+
+% Cross-references for figures and tables
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+\usepackage{cleveref}
+
+% Bibliography and references
+\usepackage[backend=biber, style=numeric-comp, bibwarn=true, sorting=none]{biblatex}
+\usepackage{csquotes}
+\addbibresource{preferences.bib}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\AtBeginBibliography{\sloppy} % Better line breaks in the reference list
+%\setlength{\emergencystretch}{3em}
+%\def\UrlBreaks{\do\/\do-\do\_\do\.\do\&amp;\do\?}
+\usepackage{import}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{urldate}{(#1)}
+
+%\bibliography{99_Quellen/Quellen}
+\renewcommand*{\newunitpunct}{\addcomma\space}  % Comma instead of period
+%\setlength{\emergencystretch}{6em}
+
+% Additional utility packages
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+%\usepackage{gensymb}
+
+% SI units
+\usepackage{siunitx}    
+\DeclareSIUnit{\bar}{bar}
+\DeclareSIUnit{\masspercent}{mass\text{-}\%}
+\DeclareSIUnit{\literperminute}{\liter\per\minute}
+\DeclareSIUnit{\centistokes}{cSt}
+\sisetup{locale=US,
+	per-mode=fraction, % per-mode=reciprocal is also possible
+		separate-uncertainty
+}
+
+% Numbering for figures, tables, and equations
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+
+% Serif headings, if needed
+%\setkomafont{chapter}{\normalfont\bfseries}
+%\setkomafont{section}{\normalfont\bfseries}
+%\setkomafont{subsection}{\normalfont\bfseries}
+%\setkomafont{subsubsection}{\normalfont\bfseries}
+
+% Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Image overlays
+\usepackage[percent]{overpic}
+\usepackage{nameref}  % References by name
+
+% Acronyms and appendix
+\usepackage{appendix}                   % Appendix
+\addto\captionsenglish{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
+
+% Tables
+\usepackage{colortbl}   
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+\newcolumntype{J}[1]{>{\justifying\arraybackslash}m{#1}}
+\newcolumntype{x}[1]{!{\centering\arraybackslash\vrule width #1}}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Section numbering and tables
+\setcounter{secnumdepth}{4}             % Numbering down to 1.1.1.1
+\renewcommand{\arraystretch}{1.5}       % Larger table row height
+
+% Header and footer
+\pagestyle{scrheadings}
+\automark{chapter}
+\ihead{\headmark}
+\chead{}
+\ohead{}
+\ifoot{}
+\cfoot{\pagemark}
+\ofoot{}
+
+% Line spacing 1.5
+\onehalfspacing
+
+% List of equations
+\DeclareNewTOC[type=equation,types=equations,listname={List of Equations}]{equ}
+\newcommand{\myequations}[1]
+{
+	\addcontentsline{equ}{equation}
+	{
+		\protect \numberline {\theequation}~~#1
+	}
+}
+
+% Format paragraphs like regular headings
+\usepackage{blindtext}                    % Placeholder text
+
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
+	{-3.25ex plus -1ex minus -0.2ex}%
+	{1.5ex plus 0.2ex}%
+	{\normalfont\normalsize\bfseries\sffamily}}
+\makeatother
+
+\stepcounter{secnumdepth}
+\stepcounter{tocdepth}
+
+% -- Prevent unwanted page breaks
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% -- Allow math environments and "\," in PDF strings
+\pdfstringdefDisableCommands{%
+  \def\,{}%
+  \def\textsuperscript#1{#1}%
+}
+
+% -- Heading font sizes
+\setkomafont{section}{\Large\bfseries}
+\setkomafont{subsection}{\large\bfseries}
+\setkomafont{subsubsection}{\normalsize\bfseries}
+
+
+% -- Dynamic width for appendix section numbers
+\RedeclareSectionCommand[tocdynnumwidth]{section}

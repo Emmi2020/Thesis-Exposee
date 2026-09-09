@@ -1,0 +1,35 @@
+% !TeX root = ../../main.tex
+\chapter{Internship Activities}
+\label{chap:internship-activities}
+
+
+\subsection{Test Benches Virtualization }
+
+At the initial phase of the internship, a task was introduced to virtualize \acp{OS} and software running on the test benches. Test benches are specialized setups used in both production environments and research and development to simulate, test, and validate the performance and behavior of product components under controlled conditions.
+
+The virtualization project was necessary to address some of the limitations of the physical \acp{PC}, which were aging along with their operating systems. A simple solution would have been to upgrade the hardware and the operating systems, but much of the software installed on these PCs had compatibility issues with newer operating systems because newer versions and updates were unavailable.
+
+\subsubsection{Host PC Preparation}
+For the implementation, several items were requested from the responsible \ac{IT} department to make the virtualization process possible.
+The items are listed as follow:
+\begin{itemize}
+    \item HP \acp{PC}.
+    \item VMWare Workstation as Virtualization Software.
+    \item Acronis imaging software for creating and managing disk images.
+    \item Two-port \ac{NIC} for providing connectivity to the \ac{VM}.
+    \item Serial interface cards for connecting legacy devices.
+\end{itemize}
+
+Before the virtualization process could begin, the operating systems of the aging physical \acp{PC} were cloned with the Acronis imaging tool in a \ac{VMDK} file format, which is compatible with VMware virtualization software. The Image files were then transferred to the new host PCs through a Network File Share.  
+
+The next step was to prepare the new \acp{PC} for virtualization by installing the serial interface cards, the two-port \acp{NIC}, and the VMware software. The network cards were configured to provide direct network connectivity to the \ac{VM}. One port is used to connect to the SPS connection, while the other is used to connect to the IMC connection.
+
+A few settings were adjusted to the host \ac{PC} to optimize the performance and compatibility of the virtual machines. For example, the memory allocation on the Hard drives, The \ac{BIOS} settings to allow virtualization, and the network configurations to assign static IP addresses were configured to ensure the Virtual Machine would run smoothly and have reliable network connectivity.
+
+\subsubsection{Installation and setup of the VM}
+
+The installation and setup of the virtual machine is carried out through the VMWare interface. First a new Virtual Machine is created, then by clicking nexts, a custom option is chosen to customize the Virtual resources such as the memory allocation, the number of processors, and the disk space for the Machine.
+
+The \ac{VMDK} image file is then attached to the newly created virtual machine as its primary disk. This allows the virtual machine to boot from the cloned operating system and have access to all the software and configurations that were present on the original physical PC.
+
+
