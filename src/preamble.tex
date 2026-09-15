@@ -16,7 +16,6 @@
 %\usepackage{microtype}
 
 % General utility packages
-\usepackage[printonlyused,nohyperlinks]{acronym}    % Acronyms
 \usepackage{microtype}                 % Better typography
 %\usepackage{textcomp}                  % Degree symbol
 \usepackage{enumitem}                  % Numbered lists
@@ -30,8 +29,14 @@
 \usepackage{subfig}                    % Figures
 \usepackage{makecell}                  % Tables
 %\usepackage{svg}                       % SVG files
+
+% Cross-references for figures and tables
+\usepackage{hyperref}
+
 \usepackage{adjustbox} 
 \usepackage{amsmath}
+\usepackage{acronym}[printonlyused]
+\usepackage{cleveref}
 \usepackage{unicode-math}
 \setmathfont{Latin Modern Math}[Scale=1.1]
 \usepackage{multirow}
@@ -40,11 +45,10 @@
 \usepackage{pifont}
 \usepackage{makecell}
 \usepackage{xurl}
+\usepackage{parskip}
 
-% Cross-references for figures and tables
-\usepackage{hyperref}
+
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
-\usepackage{cleveref}
 
 % Bibliography and references
 \usepackage[backend=biber, style=numeric-comp, bibwarn=true, sorting=none]{biblatex}
@@ -172,3 +176,6 @@
 
 % -- Dynamic width for appendix section numbers
 \RedeclareSectionCommand[tocdynnumwidth]{section}
+
+% -- Paragraph formatting 
+\setlength{\parindent}{0pt}
