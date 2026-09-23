@@ -5,22 +5,110 @@
 \subsection*{Research Approach}
 
 \begin{itemize}
-    \item \textbf{Literature Review:} Examine FMEA methodology, AI-assisted engineering, knowledge management in product development, and case studies of AI in quality assurance.
+    \item \textbf{Literature Review:} Examine FMEA methodology, AI-assisted engineering, and knowledge management in product development.
     
-    \item \textbf{Data Analysis:} Conduct exploratory analysis of the existing D-FMEA database to understand structure, content patterns, and semantic relationships between failure modes and mitigation actions.
+    \item \textbf{Data Analysis:} Conduct exploratory analysis of the existing D-FMEA database to understand structure, patterns, and the top 50--100 recurring failure modes.
     
-    \item \textbf{Expert Interviews:} Consult with FMEA practitioners and design engineers at Danfoss to validate findings and understand decision-making processes.
+    \item \textbf{Use Case Definition:} Identify and define one representative functional group scenario for the prototype demonstration.
     
-    \item \textbf{Use Case Modeling:} Develop a detailed case study demonstrating AI-guided D-FMEA creation for a new functional group (e.g., a new pump/motor variant with similar requirements).
+    \item \textbf{Prototype Development:} Implement a simple AI-assisted tool using TF-IDF semantic matching to suggest failure modes and mitigation actions from historical data.
     
-    \item \textbf{Proof-of-Concept Development:} Implement or prototype an AI-assisted tool (using text classification, semantic matching, or knowledge graph techniques) to showcase feasibility.
+    \item \textbf{Expert Feedback:} Validate prototype output with 1--2 experienced DFMEA engineers to assess relevance and feasibility.
 \end{itemize}
 
-\subsection*{Data Collection}
+\subsection*{Data Collection and Analysis}
 
+\subsubsection*{Primary Data Source}
 \begin{itemize}
     \item Access to Danfoss HY department's D-FMEA database (Excel files for H1B and H1P products)
-    \item Technical documentation of existing designs and functional groups
-    \item Interviews with domain experts and process owners
-    \item Relevant academic and industry literature
+    \item Extraction and anonymization of functional group and component D-FMEAs
+    \item Documentation of data structure, completeness, and metadata
+\end{itemize}
+
+\subsubsection*{DFMEA Content Analysis}
+\begin{itemize}
+    \item \textbf{Structural Mapping}: Document the hierarchical organization (system, functional group, component levels)
+    \item \textbf{Failure Mode Catalog}: Identify top 50--100 recurring failure modes across H1B and H1P products
+    \item \textbf{Action Pool}: Extract and catalog mitigation actions associated with these top failure modes
+    \item \textbf{Similarity Assessment}: Identify failure modes that appear across multiple components or product variants
+\end{itemize}
+
+\subsubsection*{Supporting Data}
+\begin{itemize}
+    \item Technical design documentation for H1B and H1P products
+    \item Expert interviews (1--2 design engineers experienced with Hydrostatics DFMEA process)
+    \item Relevant academic and industry literature on FMEA and AI-assisted engineering
+\end{itemize}
+
+\subsection*{AI Approach: Semantic Matching and Action Recommendation}
+
+Rather than evaluating multiple AI techniques, this thesis implements one focused approach optimized for speed and simplicity:
+
+\begin{itemize}
+    \item \textbf{Failure Mode Matching}: Use TF-IDF and cosine similarity to match new failure mode descriptions against the historical pool
+    \item \textbf{Action Recommendation}: Retrieve and rank mitigation actions from similar historical failure modes
+    \item \textbf{Presentation}: Display ranked candidates to engineer for review and selection
+\end{itemize}
+
+This approach is chosen for:
+\begin{itemize}
+    \item \textbf{Simplicity}: Implementable in Python with standard libraries (scikit-learn) in 1--2 weeks
+    \item \textbf{Interpretability}: Engineers can understand why a specific action is recommended
+    \item \textbf{Speed}: No training data required; operates directly on DFMEA text content
+\end{itemize}
+
+\subsection*{Prototype Implementation}
+
+A working prototype will demonstrate the feasibility of AI-guided D-FMEA creation for one representative functional group:
+
+\begin{enumerate}
+    \item \textbf{Functional Group Selection}: Choose ONE functional group scenario (e.g., displacement control, pressure compensator) with 3--5 components
+    \item \textbf{Manual Reference}: Document how the traditional copy-paste process would create a D-FMEA for this group
+    \item \textbf{AI Prototype Pipeline}: Build a simple script that:
+    \begin{itemize}
+        \item Takes as input: functional group description and components
+        \item Queries historical D-FMEA pool (H1B/H1P data) for related failure modes
+        \item Ranks and displays top 10--15 candidate failure modes and associated mitigation actions
+        \item Outputs a preliminary D-FMEA template with AI suggestions
+    \end{itemize}
+    \item \textbf{Expert Validation}: Show prototype output to 1--2 engineers experienced in HY DFMEA creation
+    \item \textbf{Feedback Documentation}: Collect qualitative feedback on:
+    \begin{itemize}
+        \item Relevance and accuracy of suggestions
+        \item Usefulness compared to manual copy-paste
+        \item Time savings estimate
+        \item Feasibility for future implementation
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Prototype Scope:} This is a proof-of-concept demonstration, not a production-ready tool. Focus is on validating the concept and identifying practical challenges, not on building a deployable application.
+
+\subsection*{Evaluation Criteria}
+
+Prototype success will be assessed through expert feedback on:
+
+\begin{itemize}
+    \item \textbf{Relevance}: Did suggested failure modes and actions match real concerns for the functional group?
+    \item \textbf{Completeness}: Were there obvious failure modes in the suggestions that the engineer expected?
+    \item \textbf{Usefulness}: Would the engineer use these suggestions as a starting point for DFMEA creation?
+    \item \textbf{Time Estimate}: Roughly how much time would this save versus traditional copy-paste approach?
+    \item \textbf{Limitations}: What are the main challenges or gaps identified by the engineer?
+\end{itemize}
+
+These qualitative assessments will inform recommendations for future implementation.
+
+\subsection*{Limitations and Scope}
+
+\begin{itemize}
+    \item \textbf{Prototype Only}: This thesis demonstrates proof-of-concept, not a production-ready system. Full tool development, testing, and integration are outside the scope.
+    
+    \item \textbf{Limited Evaluation}: Validation is based on qualitative expert feedback (1--2 engineers), not formal user studies or large-scale statistical analysis.
+    
+    \item \textbf{Data Scope}: Analysis is limited to available D-FMEA data (H1B and H1P products); results may not generalize to other Danfoss product lines or industries.
+    
+    \item \textbf{Single Use Case}: Prototype is demonstrated with ONE functional group scenario. Scaling to full database is discussed but not implemented.
+    
+    \item \textbf{AI Approach}: The thesis evaluates ONE specific approach (TF-IDF similarity matching). Other AI techniques are not compared in depth.
+    
+    \item \textbf{Responsibility}: Design safety and risk assessment decisions remain the responsibility of engineering teams. AI provides support and suggestions only; human judgment is required for all final decisions.
 \end{itemize}

@@ -1,0 +1,103 @@
+% !TeX root = ../../main.tex
+
+\section{Current State: D-FMEA Landscape in Hydrostatics}
+
+\subsection*{Overview}
+
+The Hydrostatics (HY) department at Danfoss maintains a comprehensive database of D-FMEAs for pump and motor products, primarily organized around the H1B and H1P product families. These documents capture years of design decisions, failure mode assessments, and risk mitigation strategies. Understanding this landscape is essential to define where and how AI can add value.
+
+\subsection*{D-FMEA Structure and Hierarchy}
+
+D-FMEAs in the HY department follow a hierarchical organization with three distinct levels:
+
+\subsubsection*{1. System/Pump-Motor Level D-FMEA}
+\begin{itemize}
+    \item Analyzes the complete pump or motor as a functional system
+    \item Defines overall performance requirements and design parameters
+    \item Addresses failure modes at the subsystem level (e.g., flow loss, pressure drop, thermal stability)
+    \item Typically managed by lead design engineers
+\end{itemize}
+
+\subsubsection*{2. Functional Group Level D-FMEA}
+\begin{itemize}
+    \item Focuses on major functional assemblies within the pump/motor (e.g., displacement control, pressure compensator, filter)
+    \item Bridges system-level requirements to component-level design
+    \item Often reused across product variants when functional requirements are similar
+    \item Requires understanding of intercomponent failure propagation
+\end{itemize}
+
+\subsubsection*{3. Component Level D-FMEA}
+\begin{itemize}
+    \item Analyzes individual parts or subassemblies (e.g., pistons, valves, seals, springs)
+    \item Most detailed and specific to material properties, manufacturing processes, and tolerances
+    \item Highest volume of D-FMEAs in the database
+    \item Most likely to benefit from pattern matching and historical knowledge reuse
+\end{itemize}
+
+\subsection*{Data Structure and Content}
+
+Existing D-FMEAs in the HY department are maintained in Excel files with the following standard fields:
+
+\begin{itemize}
+    \item \textbf{Functional Group/Component}: Name and identifier
+    \item \textbf{Function}: Detailed description of intended performance
+    \item \textbf{Failure Mode}: What could go wrong (e.g., ``Loss of seal integrity'')
+    \item \textbf{Potential Causes}: Root causes (e.g., ``Material fatigue'', ``Contamination'')
+    \item \textbf{Current Detection Method}: How failure is detected
+    \item \textbf{Severity (S)}: Impact on product (1--10 scale)
+    \item \textbf{Occurrence (O)}: Likelihood of failure (1--10 scale)
+    \item \textbf{Detection (D)}: How easily the failure can be detected (1--10 scale)
+    \item \textbf{RPN (Risk Priority Number)}: $S \times O \times D$ product
+    \item \textbf{Recommended Actions}: Design or process changes to reduce risk
+    \item \textbf{Responsible Party}: Who owns the mitigation
+    \item \textbf{Status}: Open, closed, or deferred
+\end{itemize}
+
+\subsection*{Current Workflow and Challenges}
+
+\subsubsection*{Existing Process}
+
+When developing a new functional group or variant:
+
+\begin{enumerate}
+    \item Engineer identifies the most similar historical D-FMEA
+    \item Copies the baseline document and modifies function/design-specific sections
+    \item Manually adjusts severity, occurrence, and detection ratings
+    \item Recommends new mitigation actions or adopts historical ones
+    \item Documents changes and submits for review
+\end{enumerate}
+
+\subsubsection*{Identified Inefficiencies}
+
+\begin{itemize}
+    \item \textbf{Single Reference}: Only one ``most similar'' D-FMEA is typically referenced; insights from structurally or functionally related documents are often missed
+    \item \textbf{Inconsistency}: Similar failure modes in different components may receive inconsistent severity or detection ratings
+    \item \textbf{Redundant Work}: Engineers manually search for relevant mitigation actions rather than systematically mining the historical pool
+    \item \textbf{Knowledge Loss}: Reasons for certain design decisions (why a particular severity was assigned, why a specific action was chosen) may not be explicit
+    \item \textbf{Scalability}: As the product line expands, maintaining consistency across an ever-growing D-FMEA pool becomes increasingly challenging
+\end{itemize}
+
+\subsection*{AI Opportunity}
+
+Intelligent systems can:
+
+\begin{itemize}
+    \item \textbf{Identify Similar Failure Modes}: Use semantic matching to find related failure modes across the entire D-FMEA pool, not just the most obvious reference
+    \item \textbf{Recommend Mitigation Actions}: Suggest proven actions from similar functional groups that reduce the same risks
+    \item \textbf{Flag Inconsistencies}: Alert engineers when severity or occurrence ratings diverge unexpectedly for analogous failure modes
+    \item \textbf{Accelerate Creation}: Pre-populate new D-FMEA templates with candidate failure modes and actions, reducing manual entry
+    \item \textbf{Maintain Knowledge}: Preserve the rationale and context behind design decisions for future reference
+\end{itemize}
+
+\subsection*{Scope and Boundaries}
+
+AI-assisted D-FMEA creation will:
+
+\begin{itemize}
+    \item \textbf{Support} the engineer's decision-making process by surfacing relevant historical data
+    \item \textbf{Not Replace} domain expertise in assessing design-specific risks or evaluating novel failure modes
+    \item \textbf{Not Determine} final severity, occurrence, or detection ratings (responsibility remains with engineering team)
+    \item \textbf{Not Override} compliance or safety-critical judgments
+\end{itemize}
+
+The engineer remains the ultimate owner of the D-FMEA; AI serves as an accelerator and consistency check.
