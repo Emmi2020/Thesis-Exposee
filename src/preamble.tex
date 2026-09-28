@@ -4,13 +4,11 @@
 \ifPDFTeX
 	% fontspec and \setmainfont require XeLaTeX or LuaLaTeX.
 	\usepackage[T1]{fontenc}
-	\usepackage{helvet}
-	\renewcommand{\familydefault}{\sfdefault}
+	\usepackage{newtxtext}
+	\renewcommand{\familydefault}{\rmdefault}
 \else
 	\usepackage{fontspec}
-	\IfFontExistsTF{Verdana}
-		{\setmainfont{Verdana}}
-		{\setmainfont{TeX Gyre Heros}}
+	\setmainfont{Times New Roman}
 \fi
 \usepackage[english]{babel}
 %\usepackage{microtype}
@@ -21,9 +19,10 @@
 \usepackage{enumitem}                  % Numbered lists
 \usepackage{scrlayer-scrpage}          % Header and footer
 \usepackage{setspace}                  % Line spacing
+\setstretch{0.95}                      % Reduce line spacing
 \usepackage{graphicx}                  % Images
 \usepackage{tikz}                      % Graphics and annotations
-\usepackage[left=25mm,right=25mm,top=25mm,bottom=20mm]{geometry} % Page margins
+\usepackage[left=20mm,right=20mm,top=20mm,bottom=18mm]{geometry} % Page margins
 \usepackage{blindtext}                 % Placeholder text
 \usepackage{pdfpages}                  % Include PDF files
 \usepackage{subfig}                    % Figures
@@ -47,7 +46,7 @@
 \usepackage{xurl}
 \usepackage{parskip}
 \usepackage{nicefrac}     % For fractions like \nicefrac{1}{3}
-
+\usepackage{pgfgantt}    % Gantt charts
 
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
 

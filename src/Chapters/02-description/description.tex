@@ -4,19 +4,10 @@
 
 \subsection*{Current Situation}
 
-Hydrostatic pump and motor design at Danfoss follows repetitive patterns. Existing D-FMEAs for similar components (H1B and H1P product families) are stored in centralized databases as Excel files, containing valuable insights about failure modes, severity assessments, and mitigation actions.
+When creating D-FMEAs for new components, engineers typically rely on copy-paste workflows using only one or a few reference documents instead of systematically analyzing the full historical knowledge pool. Existing D-FMEAs for similar components (H1B\footnote{Bent-axis axial piston motor product family in Hydrostatic product family at Danfoss Power Solutions.} and H1P\footnote{Closed-circuit axial piston pump product families in Hydrostatic product family at Danfoss Power Solutions.}) are stored as centralized Excel files in a SharePoint Library, containing valuable insights about failure modes, severity assessments, and mitigation actions. This underutilization of available knowledge results in inefficient processes and risks overlooking critical design issues.
 
 \subsection*{Problem}
 
-When developing new functional groups or components, engineers typically reference only the most similar existing D-FMEA through copy-paste, rather than systematically analyzing the entire available D-FMEA pool. This approach leads to:
+Manually searching and propagating these Excel files leads to immense time consumption and cognitive load. consequently, critical failure risks are frequently overlooked because engineers only refer to a single baseline document rather than investigating the entire knowledge pool. From an IT perspective, there is a lack of an automated ingestion pipeline capable of resolving complex table layouts, structing the data and serving it securely to Users.
 
-\begin{itemize}
-    \item Overlooked critical design issues present in other historical D-FMEAs
-    \item Incomplete risk assessments
-    \item Inefficient manual processes
-    \item Inconsistent decision-making across similar components
-\end{itemize}
 
-\subsection*{Why This Matters}
-
-Inadequate D-FMEAs can result in design flaws reaching production, compromising product reliability and customer satisfaction. Systematic AI support could transform this process by intelligently identifying, categorizing, and recommending relevant actions from the entire knowledge pool.

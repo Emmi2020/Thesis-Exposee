@@ -3,13 +3,21 @@
 \section{Objectives}
 
 \begin{enumerate}
-    \item Analyze the existing D-FMEA database (H1B and H1P product families) to understand structure and patterns.
+    \item Analyzing the existing D-FMEA Excel files for H1B and H1P product families to understand their structure, content, and patterns.\footnote{Files will be ingested and profiled within Databricks, explicitly targeting the historical data patterns of the H1B and H1P product families.}
     
-    \item Characterize differences between pump/motor-level, functional group-level, and component-level D-FMEAs.
+    \item Understanding differences between pump/motor-level, functional group-level, and component-level D-FMEAs. 
     
-    \item Define an AI support model that identifies what can be automatically suggested versus what requires human judgment.
+    \item Defining an AI support model that identifies what can be automatically suggested versus what requires human judgment.\footnote{This involves identifying which standard rows can be safely autopopulated versus where novel design changes require human engineering validation.}
     
-    \item Demonstrate feasibility through a prototype applied to a representative functional group.
+    \item Demonstrating feasibility through a prototype applied to a representative functional group.\footnote{Engineering an end-to-end data pipeline that takes a new layout as input, runs a vector search, and automatically generates a pre-populated D-FMEA template.}
     
-    \item Provide recommendations for integrating AI-assisted D-FMEA creation into the development process.
+    \item Providing recommendations for integrating AI-assisted D-FMEA creation into the development process.
 \end{enumerate}
+
+ \section{Preliminary Sources}
+\begin{itemize}
+    \item Existing internal courses on DFMEA tailored to Danfoss Power Solutions's Hydrostatic division.
+    \item Selected research papers on Retrieval Augmented Generation (RAG) and AI-assisted knowledge management.
+    \item Internal documentation and guidelines on D-FMEA processes at Danfoss Power Solutions.
+    \item Databricks documentation on platform capabilities and usage.
+\end{itemize}
